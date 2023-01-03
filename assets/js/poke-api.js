@@ -15,9 +15,20 @@ function convertPokeApiDetailToPokemon(pokeDetail){
 
     p.image = pokeDetail.sprites.other.home.front_shiny;
 
+    const stats = pokeDetail.stats.map((stat) => capitalizeFirstLetter(stat.stat.name) +": " + stat.base_stat + "\n")
+    p.stats = stats;
+
+    p.height = pokeDetail.height;
+    p.weight = pokeDetail.weight;
+    p.base_experience = pokeDetail.base_experience;
+
+
     return p;
 }
-
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+  
 
 pokeApi.getPokemonDetail = (pokemon) => {
     return fetch(pokemon.url).then( (response) => response.json())
@@ -29,7 +40,7 @@ pokeApi.getPokemons = (offset = 0, limit = 9) => {
     const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
     
     const pokemonList = document.getElementById("pokemonList");
-    console.log(pokemonList);
+    
 
     return fetch(url)
         .then((response) => response.json())

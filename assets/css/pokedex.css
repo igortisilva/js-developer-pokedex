@@ -71,6 +71,7 @@
     filter: brightness(1.2);
     text-align: center;
     text-shadow: 0 0 3px rgb(5, 1, 1);
+    text-transform: capitalize;
 }
 
 .pokemon .detail{
@@ -101,6 +102,13 @@
     background-color: #7038f8;
     border: none;
     border-radius: 1rem;
+}
+
+.modal-title{
+    text-transform: capitalize;
+}
+.tipo{
+    text-transform: capitalize;
 }
 
 
